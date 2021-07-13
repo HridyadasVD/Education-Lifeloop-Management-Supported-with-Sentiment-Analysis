@@ -1,0 +1,22 @@
+{% extends 'home.html' %} {% load crispy_forms_tags %} {% block title %}Lesson Create {% endblock %} {% block content %}
+
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Create New Lesson</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<h4>
+    <center><u style="color: indianred;">Create Lesson</u></center>
+</h4>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form|crispy}}
+    <input class="btn btn-success btn-lg btn-block" type="submit" value="Create">
+</form>
+{% endblock %}

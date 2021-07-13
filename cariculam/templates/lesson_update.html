@@ -1,0 +1,25 @@
+{% extends 'home.html' %}{% load crispy_forms_tags %} {% block content %}
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Update Lesson</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<h4 class="mb-5 font-weight-bold" style="color:#ff5722;"><u>Update {{lessons.name}}</u></h4>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {{form|crispy}}
+    <div class="row">
+        <div class="col-md-4 mb-3 mr-3">
+            <input type="submit" value="Update" class="btn btn-warning btn-block">
+        </div>
+
+        <div class="col-md-4 mb-3 mr-3">
+            <a href="{% url 'cariculam:lesson_detail' course=lessons.course.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-danger btn-block">Cancel Update</a>
+        </div>
+</form>
+{% endblock %}

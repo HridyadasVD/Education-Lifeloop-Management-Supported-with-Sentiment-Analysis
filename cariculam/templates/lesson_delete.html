@@ -1,0 +1,35 @@
+{% extends 'home.html' %} {% block title %}Lesson Delete {% endblock %}{% block content %}
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Delete Lesson</h2>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<u><b><h2 style="color:hotpink">Lesson Deletion </b></h2></u>
+<div class="row d-flex justify-content-center text-center">
+    <ul class="breadcrumb">
+
+        {{lessons.course.name}} - {{lessons.subject.name}} - {{lessons.name}}
+
+    </ul>
+</div>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h4 style="color:#ff5722;"> Do you want to delete {{lessons.name}}? </h4>
+    <div class="row">
+        <div class="col-md-4 mb-3 mr-3">
+            <input type="submit" value="Delete" class="btn btn-danger btn-block">
+        </div>
+        <div class="col-md-4 mb-3 mr-3">
+            <a href="{% url 'cariculam:lesson_detail' course=lessons.course.slug subject=lessons.subject.slug slug=lessons.slug %}" class="btn btn-warning btn-block">Cancel Deletion</a>
+        </div>
+    </div>
+
+</form>
+{% endblock %}

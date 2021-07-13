@@ -1,0 +1,30 @@
+{% extends 'home.html' %} {% block content %}
+<section class="section courses" data-section="section4">
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Choose Your Subject</h2>
+                </div>
+            </div>
+            {% for subject in courses.subjects.all %}
+            <div class="item">
+                <div class="down-content">
+                    <h4>{{subject.name}}
+                    </h4>
+                    <p>{{subject.description|truncatechars:75}}</p>
+                    <a href="{% url 'cariculam:lesson_list' slug=subject.slug course=courses.slug %}"><button class="button-les"> <span> Get Subject</span></button></a>
+
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
