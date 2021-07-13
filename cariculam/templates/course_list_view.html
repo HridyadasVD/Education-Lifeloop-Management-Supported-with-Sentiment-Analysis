@@ -1,0 +1,28 @@
+{% extends 'home.html' %} {% load static %} {% block title %} courses {% endblock %} {% block content %}
+
+<section class="section courses" data-section="section4">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Choose Your Course</h2>
+                </div>
+            </div>
+            {% for course in courses %}
+            <div class="item">
+
+                <div class="down-content">
+                    <h4><a href="{% url 'cariculam:subject_list' slug=course.slug %}">{{course.name}}</a></h4>
+                    <p>{{course.description|truncatechars:75}}</p>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock %}
