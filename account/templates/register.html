@@ -1,0 +1,101 @@
+{% extends 'home.html' %} {% load static %} {% load crispy_forms_tags %} {% block title %}Register{% endblock %} {% block content %}
+
+<section class="section main-banner" id="top" data-section="section1">
+    <video autoplay muted loop id="bg-video">
+      <source src="/static/assets/images/course-video.mp4" type="video/mp4" />
+  </video>
+    <div class="video-overlay header-text">
+        <div class="caption">
+
+            <h6>Graduate School of Management</h6>
+            <h2><em>Your</em> Classroom</h2>
+
+            <div class="main-button">
+
+            </div>
+        </div>
+    </div>
+</section>
+{% if registered %}
+<h1>Thank you for Registering</h1> {% else %}
+<h3>
+    <center><u style="color: tomato;">Register Here</u></center>
+</h3>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ user_form|crispy }} {{ profile_form|crispy }}
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <input type="submit" value="Register" class="btn btn-primary btn-block">
+        </div>
+    </div>
+</form>
+
+
+
+{% endif %}
+<section class="section coming-soon" data-section="section3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-xs-12">
+                <div class="continer centerIt">
+                    <div>
+                        <h4>Take <em>any online course</em> and win $326 for your next class</h4>
+                        <div class="counter">
+
+                            <div class="days">
+                                <div class="value">00</div>
+                                <span>Days</span>
+                            </div>
+
+                            <div class="hours">
+                                <div class="value">00</div>
+                                <span>Hours</span>
+                            </div>
+
+                            <div class="minutes">
+                                <div class="value">00</div>
+                                <span>Minutes</span>
+                            </div>
+
+                            <div class="seconds">
+                                <div class="value">00</div>
+                                <span>Seconds</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="right-content">
+                    <div class="top-content">
+                        <h6>Login for your free account and <em>get immediate</em> access to online courses</h6>
+                    </div>
+                    <form id="contact" action="{%url 'user_login' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <input name="username" type="text" class="form-control" id="name" placeholder="Your Name" required="">
+                                </fieldset>
+                            </div>
+
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <input name="password" type="password" class="form-control" id="password" placeholder="Your Password" required="">
+                                </fieldset>
+                            </div>
+                            <div class="col-md-12">
+                                <fieldset>
+                                    <button type="submit" id="form-submit" class="button">Login now</button>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

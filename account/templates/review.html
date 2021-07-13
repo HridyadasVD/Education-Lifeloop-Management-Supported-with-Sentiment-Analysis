@@ -1,0 +1,26 @@
+{% extends 'home.html' %} {% block content %} {% load widget_tweaks %}{%load static%}
+
+<section class="section contact" data-section="section6">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading">
+                    <h2>Review About Student</h2>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <form action="{% url 'review' %}" method="POST">
+                    <input type="text" name="student" class="form-control" id="name" placeholder="Student Name" required="">
+                    <input type="text" name="review" class="form-control" id="name" placeholder="Review" required="">
+                    <div class="col-md-12">
+                        <fieldset>
+                            <button type="submit" id="form-submit" class="button">Send Review</button>
+                        </fieldset>
+                        {% if msg %}
+                        <h2 style="color: white;"></h2>{{msg}}{% endif %}
+                    </div>
+                </form>
+            </div>
+
+            {% endblock %}
